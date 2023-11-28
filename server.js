@@ -11,21 +11,12 @@ io.listen(5000);
 let peers = {};
 
 io.on("connection", (socket) => {
-  console.log(
-    "Peer joined with ID",
-    socket.id,
-    ". There are " +
-    io.engine.clientsCount +
-    " peer(s) connected."
-  );
-
   if (!peers[socket.id]) {
     peers[socket.id] = {};
+    socket.emit("introduction", Object.keys(peers));
+    io.emit("newUserConnected", socket.id);
+    console.log("Peer joined with ID", socket.id, ". There are " + io.engine.clientsCount + " peer(s) connected.");
   }
-
-  socket.emit( "introduction", Object.keys(peers));
-
-  io.emit("newUserConnected", socket.id);
 
   socket.on("signal", (to, from, data) => {
     if (to in peers) {
@@ -37,18 +28,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     delete peers[socket.id];
-    io.sockets.emit(
-      "userDisconnected",
-      io.engine.clientsCount,
-      socket.id,
-      Object.keys(peers)
-    );
-    console.log(
-      "User " +
-      socket.id +
-      " diconnected, there are " +
-      io.engine.clientsCount +
-      " clients connected"
-    );
+    io.sockets.emit("userDisconnected", io.engine.clientsCount, socket.id, Object.keys(peers));
+    console.log("Peer disconnected with ID", socket.id, ". There are " + io.engine.clientsCount + " peer(s) connected.");
   });
 });
