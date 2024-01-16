@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: ["http://localhost:3000", "https://eisc-metaverse.vercel.app", "https://eisc-metaverse-fabiansvc.vercel.app"]
+    origin: ["https://eisc-metaverse.vercel.app"]
   },
 });
 
@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     delete peers[socket.id];
-    io.sockets.emit("userDisconnected", io.engine.clientsCount, socket.id, Object.keys(peers));
+    io.sockets.emit("userDisconnected", socket.id);
     console.log("Peer disconnected with ID", socket.id, ". There are " + io.engine.clientsCount + " peer(s) connected.");
   });
 });

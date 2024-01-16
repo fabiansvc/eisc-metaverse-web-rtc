@@ -1,6 +1,6 @@
 {
   "name": "eisc-metaverse-web-rtc",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "WebRTC for the EISC Metaverse",
   "type": "module",
   "main": "server.js",
