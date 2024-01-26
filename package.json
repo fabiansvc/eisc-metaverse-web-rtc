@@ -3,14 +3,17 @@
   "version": "1.0.1",
   "description": "WebRTC for the EISC Metaverse",
   "type": "module",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node --env-file=.env server.js"
+    "dev": "nodemon --env-file=.env src/index.js"
   },
   "author": "Fabian Stiven Valencia Cordoba",
   "license": "ISC",
   "dependencies": {
     "simple-peer": "^9.11.0",
     "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
