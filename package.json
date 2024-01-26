@@ -1,11 +1,11 @@
 {
   "name": "eisc-metaverse-web-rtc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WebRTC for the EISC Metaverse",
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node --env-file=.env server.js"
   },
   "author": "Fabian Stiven Valencia Cordoba",
   "license": "ISC",
