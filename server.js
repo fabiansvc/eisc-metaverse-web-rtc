@@ -1,12 +1,15 @@
 import { Server } from "socket.io";
 
+const apiUrl = process.env.SERVER_URL
+const port = process.env.PORT
+
 const io = new Server({
   cors: {
-    origin: ["https://eisc-metaverse.vercel.app", "http://localhost:3000"]
+    origin: [apiUrl]
   },
 });
 
-io.listen(5000);
+io.listen(port);
 
 let peers = {};
 
