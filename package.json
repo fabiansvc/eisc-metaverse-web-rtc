@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env src/index.js"
+    "dev": "node src/index.js"
   },
   "author": "Fabian Stiven Valencia Cordoba",
   "license": "ISC",
