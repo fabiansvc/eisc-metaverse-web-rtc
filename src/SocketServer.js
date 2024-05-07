@@ -9,15 +9,16 @@ import { Server } from "socket.io";
 export default class SocketServer {
   /**
    * Constructor of the SocketServer class.
-   * @param {string} apiUrl The URL of the server API.
+   * @param {string} clientURLLocalhost The URL of the server API.
    * @param {number} port The port number for the WebSocket server.
    */
-  constructor(apiUrl, port) {
-    this.apiUrl = apiUrl;
+  constructor(port, clientURLLocalhost, clientURLLocalhostDeploy) {
     this.port = port;
+    this.clientURLLocalhost = clientURLLocalhost;
+    this.clientURLLocalhostDeploy = clientURLLocalhostDeploy;
     this.io = new Server({
       cors: {
-        origin: [apiUrl],
+        origin: [clientURLLocalhost, clientURLLocalhostDeploy],
       },
     });
     this.peers = {};
