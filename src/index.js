@@ -1,13 +1,11 @@
-import { Server } from "socket.io";
+"use strict";
 
-const apiUrl = process.env.SERVER_URL
-const port = process.env.PORT
-
-const io = new Server({
-  cors: {
-    origin: [apiUrl]
-  },
-});
+/**
+ * Load environment variables from .env file.
+ */
+const clientURLLocalhost = "http://localhost:3000";
+const clientURLDeploy = "https://eisc-metaverse.vercel.app";
+const port = process.env.PORT;
 
 io.listen(port);
 
